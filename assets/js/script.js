@@ -14,15 +14,10 @@ class Multimedia{
         let _url = url;
 
         this.getUrl = () => _url;
-        this.setUrl = (nueva_url) => _url = nueva_url
     }
 
     get url(){
         return this.getUrl();
-    }
-
-    set url(nueva_url){
-        return this.setUrl(nueva_url);
     }
 
     setInicio(){
@@ -47,21 +42,21 @@ class Reproductor extends Multimedia{
     }
 
     setInicio(tiempo){
-        let nueva_url = `${this.url}?start=${tiempo}`;
-        return this.url(nueva_url);
+        $(`#${this.id}`).attr("src", `${this.url}?start=${tiempo}`)
     }
 }
 
-let musica1 = new Reproductor("https://www.youtube.com/embed/ec0XKhAHR5I", "musica")
-let pelicula1 = new Reproductor("https://www.youtube.com/embed/6QkTCmhOzuA", "peliculas")
-let serie1 = new Reproductor("https://www.youtube.com/embed/0STDZqXCTxs", "series")
+let musica1 = new Reproductor("https://www.youtube.com/embed/sBI1oxp8f8U", "musica")
+let pelicula1 = new Reproductor("https://www.youtube.com/embed/HKJ4Thgk1Js", "peliculas")
+let serie1 = new Reproductor("https://www.youtube.com/embed/fVQUcaO4AvE", "series")
 
 $(() => {
     musica1.playMultimedia();
+    musica1.setInicio(60);
 
-    pelicula1.setInicio(30);
-    console.log(pelicula1)
-    // pelicula1.playMultimedia();
+    pelicula1.playMultimedia();
+    pelicula1.setInicio(20);
 
     serie1.playMultimedia();
+    serie1.setInicio(12);
 })
